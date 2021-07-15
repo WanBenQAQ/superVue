@@ -34,7 +34,15 @@
         }, 0).toFixed(2)
       },
       checkLength() {
+        //求商品类型数量
         return this.cartList.filter(item => item.checked).length
+
+        //求商品总数量
+        /*return this.cartList.filter(item => {
+          return item.checked
+        }).reduce((pre, item) => {
+          return pre += item.count
+        }, 0)*/
       },
       isSelectAll() {
         if (this.cartList.length === 0) return false

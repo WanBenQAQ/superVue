@@ -8,7 +8,7 @@
       <detail-swiper :top-images="topImages"/>
       <detail-base-info :goods="goods"/>
       <detail-shop-info :shop="shop"/>
-      <detail-goods-info :detail-info="detailInfo" @image-load="imageLoad"/>
+      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"/>
       <detail-param-info :param-info="paramInfo" ref="param"/>
       <detail-comment-info :comment-info="commentInfo" ref="comment"/>
       <goods-list :goods="recommends" ref="recommends"/>
@@ -187,7 +187,8 @@
       },
       titleClick(index) {
         //点击跳转到对应位置
-        this.$refs.scroll.scrollTo(0, -this.themeTopYs[index], 300)
+        console.log(-this.themeTopYs);
+        this.$refs.scroll.scrollTo(0, -(this.themeTopYs[index]), 300)
       }
     },
 /*    mounted() {
