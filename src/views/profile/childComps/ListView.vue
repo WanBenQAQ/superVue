@@ -1,8 +1,12 @@
 <template>
   <div id="list">
     <div v-for="(item, index) in listData" :key="index" class="item">
-      <span class="icon">
-        <svg :fill="item.iconColor"><use :xlink:href="item.icon"></use></svg>
+      <span class="Myicon">
+        <svg :t="item.svgt" class="icon" viewBox="0 0 1024 1024"
+             version="1.1" xmlns="http://www.w3.org/2000/svg" :p-id="item.svgpid" width="128" height="128">
+          <path :d="item.imgd" :p-id="item.imgpid" :fill="item.imgfill">
+          </path>
+        </svg>
       </span>
       <div class="info">{{item.info}}</div>
     </div>
@@ -19,6 +23,9 @@
           return []
         }
       }
+    },
+    mounted() {
+      console.log(this.listData);
     }
   }
 </script>
@@ -36,12 +43,12 @@
     position: relative;
   }
 
-  .icon svg {
-    width: 18px;
+  .Myicon .icon {
+    width: 26px;
     height: 18px;
   }
 
-  .item .icon {
+  .item .Myicon {
     margin-top: 10px;
     position: absolute;
     left: 16px;
