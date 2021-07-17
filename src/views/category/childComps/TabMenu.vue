@@ -32,6 +32,13 @@
         currentIndex: 0
       }
     },
+    mounted() {
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.$refs.scroll.refresh()
+        }, 100)
+      })
+    },
     methods: {
       itemClick(index) {
         this.currentIndex = index
