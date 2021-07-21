@@ -19,5 +19,5 @@ export default {
 
 <style>
   @import "./assets/css/base.css";
-
+  * { touch-action: pan-y; }
 </style>

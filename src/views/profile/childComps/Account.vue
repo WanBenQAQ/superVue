@@ -13,19 +13,30 @@
         </div>
         <div class="account-info">我的优惠</div>
       </div>
-      <div class="account-item">
+      <div @click="CollectionListItem" class="account-item">
         <div class="number">
-          <span class="balance">0</span>分
+          <span class="balance">{{CollectionListLength}}</span>个
         </div>
-        <div class="account-info">我的积分</div>
+        <div class="account-info">我的收藏</div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default {
-    name: "Account"
+    name: "Account",
+    computed: {
+      ...mapGetters([
+        'CollectionListLength'
+      ]),
+    },
+    methods: {
+      CollectionListItem() {
+        this.$router.push('/collection')
+      }
+    }
   }
 </script>
 

@@ -3,7 +3,7 @@
     <nav-bar class="nav-bar"><div slot="center">商品分类</div></nav-bar>
     <div class="content">
       <tab-menu :categories="categories" @selectItem="selectItem"/>
-      <scroll id="tab-content" ref="scroll">
+      <scroll id="tab-content" ref="scroll" :probe-type="3" @scroll="contentScroll">
         <div>
           <tab-content-category :subcategories="showSubcategory" @imageLoad="imageLoad"/>
           <tab-control :titles="['综合', '新品', '销量']" @itemClick="tabClick"/>
@@ -11,6 +11,7 @@
         </div>
       </scroll>
     </div>
+    <back-top @click.native="backClick" v-show="isShowBackTop"/>
   </div>
 </template>
 
@@ -22,10 +23,11 @@
 
   import NavBar from "components/common/navBar/NavBar";
   import Scroll from "components/common/scroll/Scroll";
+  import BackTop from "components/content/backTop/BackTop";
 
   import { getCategory, getSubcategory, getCategoryDetail } from "network/category";
   import { POP, SELL, NEW } from "common/const";
-  import { tabControlMixin, itemListenerMixin } from "common/mixin";
+  import { tabControlMixin, itemListenerMixin, backTopMixin } from "common/mixin";
 
   export default {
     name: "Category",
@@ -35,9 +37,10 @@
       TabControl,
       TabContentDetail,
       NavBar,
-      Scroll
+      Scroll,
+      BackTop
     },
-    mixins: [ tabControlMixin, itemListenerMixin ],
+    mixins: [ tabControlMixin, itemListenerMixin, backTopMixin ],
     data() {
       return {
         categories: [],
@@ -76,6 +79,9 @@
           }
           this.getSubcategories(0)
         })
+      },
+      contentScroll(position) {
+        this.listenShoBackTop(position)
       },
       getSubcategories(index) {
         this.currentIndex = index;

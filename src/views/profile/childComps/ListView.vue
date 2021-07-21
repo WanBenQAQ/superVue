@@ -23,9 +23,6 @@
           return []
         }
       }
-    },
-    mounted() {
-      console.log(this.listData);
     }
   }
 </script>

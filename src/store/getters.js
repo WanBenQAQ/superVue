@@ -4,5 +4,11 @@ export default {
   },
   cartList(state) {
     return state.cartList
+  },
+  CollectionListLength(state) {
+    return state.CollectionList.length
+  },
+  CollectionList(state) {
+    return state.CollectionList
   }
 }

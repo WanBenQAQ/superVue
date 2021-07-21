@@ -8,7 +8,7 @@
       <span>全选</span>
     </div>
     <div class="price">
-      合计：{{totalPrice}}
+      合计：<span class="totalPrice">{{totalPrice}}</span>
     </div>
     <div class="calculate" @click="calcClick">
       去计算({{checkLength}})
@@ -79,7 +79,7 @@
     background-color: #eee;
     height: 40px;
     line-height: 40px;
-
+    top: -8px;
   }
   .check-content {
     display: flex;
@@ -98,6 +98,9 @@
     margin-left: 10px;
     font-size: 14px;
     flex: 1;
+  }
+  .price .totalPrice {
+    color: red;
   }
   .calculate {
     width: 90px;

@@ -15,7 +15,9 @@
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
     <!--<toast :message="message" :isShow="isShow"/>-->
-    <detail-bottom-bar @addCart="addToCart"/>
+    <detail-bottom-bar @addCart="addToCart"
+                       @addCollection="addToCollection"
+                       @removeCollection="removeToCollection"/>
   </div>
 </template>
 
@@ -97,7 +99,6 @@
         if (data.rate.cRate !== 0) {
           this.commentInfo = data.rate.list[0]
         }
-
         /*//获取商品、参数、评论、推荐的坐标信息
         this.$nextTick(() => {
           // 根据最新的数据，对应的DOM已经被渲染出来了
@@ -142,6 +143,7 @@
         product.title = this.goods.title
         product.desc = this.goods.desc
         product.price = this.goods.realPrice
+        product.isShow = true
         product.iid = this.iid
 
         // 2.将商品添加到购物车中
@@ -154,6 +156,21 @@
           }, 1500)*/
           this.$toast.show(res, 1500)
         })
+      },
+      addToCollection() {
+        const Collection = {}
+        Collection.image = this.topImages[0]
+        Collection.title = this.goods.title
+        Collection.desc = this.goods.desc
+        Collection.price = this.goods.realPrice
+        Collection.iid = this.iid
+        // 2.将商品添加到收藏中
+        this.$store.dispatch('addCollection', Collection).then(res => {
+          this.$toast.show(res, 1500)
+        })
+      },
+      removeToCollection() {
+        this.$store.commit('removeToCollection', this.iid)
       },
 /*      backClick() {
         // 点击返回顶部
@@ -187,7 +204,6 @@
       },
       titleClick(index) {
         //点击跳转到对应位置
-        console.log(-this.themeTopYs);
         this.$refs.scroll.scrollTo(0, -(this.themeTopYs[index]), 300)
       }
     },
