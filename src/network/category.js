@@ -1,19 +1,18 @@
 import {request} from "./request";
-import axios from "axios";
 
 export function getCategory() {
   return request({
     url: '/category'
-  })
+  }).catch(err => err);
 }
 
 export function getSubcategory(maitKey) {
   return request({
-    url: '/subcategory',
+    url: "/subcategory",
     params: {
       maitKey
     }
-  })
+  }).catch(err => err);
 }
 
 export function getCategoryDetail(miniWallkey, type) {
@@ -23,5 +22,5 @@ export function getCategoryDetail(miniWallkey, type) {
       miniWallkey,
       type
     }
-  })
+  }).catch(err => err);
 }

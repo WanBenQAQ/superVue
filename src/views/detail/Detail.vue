@@ -136,6 +136,7 @@
         // 因为图片加载完毕后这些坐标一定是正确的
         this.getThemeTopY()
       },
+      //添加商品到购物车
       addToCart() {
         // 1.获取购物车需要展示的信息
         const product = {}
@@ -157,6 +158,7 @@
           this.$toast.show(res, 1500)
         })
       },
+      //将商品添加到收藏夹
       addToCollection() {
         const Collection = {}
         Collection.image = this.topImages[0]

@@ -2,7 +2,7 @@ import {ADD_COUNTER,
   ADD_TO_CART,
   ADD_TO_COLLECTION,
   COLLECTION_IS_CHECKED,
-  REMOVE_TO_COLLECTION} from "./mutation-types";
+  SET_LOADING} from "./mutation-types";
 
 export default {
   //mutations唯一的目的就是修改state中的状态
@@ -14,6 +14,10 @@ export default {
     payload.checked = true
     state.cartList.push(payload)
   },
+  // 设置请求加载
+  [SET_LOADING](state, bol) {
+    state.isLoading = bol;
+  },
   [ADD_TO_COLLECTION](state, payload) {
     state.CollectionList.push(payload)
   },
@@ -22,6 +26,14 @@ export default {
       if (state.CollectionList[Number(key)].iid === payload) {
         //state.CollectionList[Number(key)].isCollection = true
         state.CollectionList.splice(key, 1)
+      }
+    }
+  },
+  removeToCart(state, payload) {
+    for (let key in state.cartList) {
+      if (state.cartList[Number(key)].iid === payload) {
+        //state.CollectionList[Number(key)].isCollection = true
+        state.cartList.splice(key, 1)
       }
     }
   },

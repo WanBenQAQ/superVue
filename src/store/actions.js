@@ -26,7 +26,8 @@ export default {
       if (oldProduct) {
         for (let key in context.state.CollectionList) {
           if (context.state.CollectionList[Number(key)].iid === payload.iid) {
-            context.commit('isChecked', Number(key))
+            // context.commit('isChecked', Number(key))
+            resolve('该商品已被收藏')
           }
         }
       } else { //添加商品

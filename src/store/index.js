@@ -10,7 +10,9 @@ Vue.use(Vuex)
 
 const state = {
   cartList: [],
-  CollectionList: []
+  CollectionList: [],
+  // 是否开启请求加载
+  isLoading: true
 }
 
 //2. 创建Store对象

@@ -31,9 +31,6 @@
         probeType: this.probeType,
         pullUpLoad: this.pullUpLoad
       })
-      /*this.scroll.on('scroll', (position) => {
-        console.log(position);
-      })*/
 
       //2. 监听滚动的区域
       if(this.probeType === 2 || this.probeType === 3) {
